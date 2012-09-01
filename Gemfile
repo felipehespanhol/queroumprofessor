@@ -8,10 +8,12 @@ gem 'rails', '3.2.8'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+
 gem 'mysql2'
 gem 'therubyracer'
 
-
+gem 'haml'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
