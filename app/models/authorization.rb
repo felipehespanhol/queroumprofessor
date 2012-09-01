@@ -7,9 +7,9 @@ class Authorization < ActiveRecord::Base
     find_by_provider_and_uid(hash['provider'], hash['uid'])
   end
 
-  def self.create_from_hash(hash, user=nil)
-    user ||= User.create_from_hash!(hash)
-    Authorization.create(:user => user,
+  def self.create_from_hash(hash, teacher=nil)
+    teacher ||= teacher.create_from_hash!(hash)
+    Authorization.create(:teacher => teacher,
                          :uid => hash['uid'],
                          :provider=> hash['provider'])
 

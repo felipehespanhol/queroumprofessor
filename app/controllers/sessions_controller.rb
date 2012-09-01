@@ -8,7 +8,7 @@ def create
     @auth = Authorization.create_from_hash(auth, current_user)
   end
   # Log the authorizing user in.
-  self.current_user = @auth.user
+  self.current_user = @auth.teacher
 
   render :text => "Welcome, #{current_user.name}."
 end
