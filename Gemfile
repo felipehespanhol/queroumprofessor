@@ -8,6 +8,11 @@ gem 'rails', '3.2.8'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-google-apps'
+#gem 'omniauth-deezer'
+#gem 'omniauth-google-oauth2'
+
 
 gem 'mysql2'
 gem 'therubyracer'
