@@ -8,9 +8,8 @@ class SessionsController < ApplicationController
 
   @authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
   if @authorization
-    session[:teacher] = @authorization.teacher.name
-    #  render :text => "Welcome back #{@authorization.teacher.name}! You have already signed up."
-  else @authorization
+    session[:teacher] = @authorization.teacher.name #  render :text => "Welcome back #{@authorization.teacher.name}! You have already signed up."
+  else
     #iauth_hash object has => provider,uid,info,credentials,  extra
     teacher = Teacher.new :name => auth_hash["info"]["name"]
     teacher.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
