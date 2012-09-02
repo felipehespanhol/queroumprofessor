@@ -1,3 +1,6 @@
+.home-header
+  - if session[:teacher]
+    = "Olá #{session[:teacher]}"
 .hero-unit.center
   %h1 Quero Um Professor
   %h3 Encontre seu professor particular com rapidez
