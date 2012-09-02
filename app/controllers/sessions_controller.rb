@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
   end
-
+=begin
   def create
     auth_hash = request.env['omniauth.auth']
     #render :text => auth_hash.inspect
@@ -21,7 +21,35 @@ class SessionsController < ApplicationController
 
     redirect_to  :controller => "teachers", :action => "home"
   end
+=end
+  def create
+    auth_hash = request.env['omniauth.auth']
+
+    if session[:teacher_id]
+      # Means our user is signed in. Add the authorization to the user
+      Teacher.find(session[:teacher_id]).add_provider(auth_hash)
+
+      #render :text => "You can now login using #{auth_hash["provider"].capitalize} too!"
+    else
+      # Log him in or sign him up
+      auth = Authorization.find_or_create(auth_hash)
+
+      # Create the session
+      session[:teacher_id] = auth.teacher.id
+
+      #render :text => "Welcome #{auth.teacher.name}!"
+    end
+
+    redirect_to  :controller => "teachers", :action => "home"
+  end
+
+  def destroy
+    session[:teacher_id] = nil
+    render :text => "You've logged out!"
+  end
 
   def failure
+    render :text => "Sorry, but you didn't allow access to our app!"
   end
+
 end

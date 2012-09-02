@@ -4,4 +4,7 @@ class TeachersController < ApplicationController
 
   def search_results
   end
+
+
+
 end
