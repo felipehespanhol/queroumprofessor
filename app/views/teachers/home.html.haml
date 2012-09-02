@@ -1,9 +1,18 @@
-.page-header.center
+.hero-unit.center
   %h1 Quero Um Professor
   %h3 Encontre seu professor particular com rapidez
 
 =form_tag "/teachers/search_results" do
 
   .home-search-box.form-inline.center
-    De &nbsp;#{text_field :speciality, :name}&nbsp;em&nbsp;#{text_field :location, :name}&nbsp;#{button_tag ">"}
+    De &nbsp;#{text_field :speciality, :name}&nbsp;em&nbsp;#{text_field :location, :name}&nbsp;#{button_tag ">", :class => "btn btn-primary"}
+
+%hr
+
+%p.center
+  É um professor e quer anunciar? Escolha sua forma de login: 
+  %span.login-icons
+    =image_tag "social-twitter-box-blue-icon.png"
+    =image_tag "social-facebook-box-blue-icon.png"
+    =image_tag "GMail-icon.png"
 
