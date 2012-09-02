@@ -1,4 +1,8 @@
 Hespanhol::Application.routes.draw do
+  get "cidades/find"
+
+  get "specialities/find"
+
   root :to => "teachers#home"
 
   get   '/login', :to => 'sessions#new', :as => :login

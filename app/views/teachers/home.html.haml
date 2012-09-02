@@ -1,9 +1,10 @@
+.center
+  = image_tag "queroumprofessor.png"
+  %h3 Encontre seu professor particular com rapidez
+
 .home-header
   - if session[:teacher]
     = "Olá #{session[:teacher]}"
-.hero-unit.center
-  %h1 Quero Um Professor
-  %h3 Encontre seu professor particular com rapidez
 
 =form_tag "/teachers/search_results" do
 
