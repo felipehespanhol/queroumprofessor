@@ -1,13 +1,9 @@
+.page-header.center
+  %h1 Quero Um Professor
+  %h3 Encontre seu professor particular com rapidez
 
 =form_tag "/teachers/search_results" do
 
-  #select_state_field
-    = label_tag :state
-    %br
-    = text_field :teacher, :state
-
-  #select_city_field
-    = label_tag :city
-    %br
-    = text_field :teacher, :city
+  .home-search-box.form-inline.center
+    De &nbsp;#{text_field :speciality, :name}&nbsp;em&nbsp;#{text_field :location, :name}&nbsp;#{button_tag ">"}
 

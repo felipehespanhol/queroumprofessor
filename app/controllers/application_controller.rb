@@ -1,18 +1,9 @@
 class ApplicationController < ActionController::Base
-  protected
+  protect_from_forgery
 
-  def current_teacher
-    @current_teacher ||= Teacher.find_by_id(session[:teacher_id])
-  end
+  before_filter :set_locale
 
-  def signed_in?
-    !!current_teacher
-  end
-
-  helper_method :current_teacher, :signed_in?
-
-  def current_teacher=(teacher)
-    @current_teacher = teacher
-    session[:teacher_id] = teacher.id
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 end

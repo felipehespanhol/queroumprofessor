@@ -1,7 +1,4 @@
 pt-BR:
-  state: "Estado"
-  city: "Cidade"
-
   date:
     abbr_day_names:
     - Dom
