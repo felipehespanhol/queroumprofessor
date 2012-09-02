@@ -13,6 +13,7 @@ gem 'omniauth-google-apps'
 gem 'webbynode'
 
 gem 'mysql2'
+gem 'sqlite3'
 gem 'therubyracer'
 
 gem 'haml'

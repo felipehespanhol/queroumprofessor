@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
 
       # Create the session
       session[:teacher_id] = auth.teacher.id
-
+      session[:teacher] = auth.teacher.name
       #render :text => "Welcome #{auth.teacher.name}!"
     end
 
@@ -45,7 +45,9 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:teacher_id] = nil
-    render :text => "You've logged out!"
+    session[:teacher] = nil
+    #render :text => "You've logged out!"
+    redirect_to  :controller => "teachers", :action => "home"
   end
 
   def failure

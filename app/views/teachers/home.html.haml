@@ -1,10 +1,12 @@
+.home-header
+  - if session[:teacher]
+    = link_to "logout", "/logout"
+    %br
+    = "Olá #{session[:teacher]}"
+
 .center
   = image_tag "queroumprofessor44.png"
   %h3 Encontre seu professor particular com rapidez
-
-.home-header
-  - if session[:teacher]
-    = "Olá #{session[:teacher]}"
 
 .home-search-box
   = render :partial => 'search_fields'
