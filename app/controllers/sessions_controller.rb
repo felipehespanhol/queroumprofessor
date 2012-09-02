@@ -1,15 +1,26 @@
 class SessionsController < ApplicationController
-def create
-
-  auth = request.env['rack.auth']
-  unless @auth = Authorization.find_from_hash(auth)
-    # Create a new user or add an auth to existing user, depending on
-    # whether there is already a user signed in.
-    @auth = Authorization.create_from_hash(auth, current_user)
+  def new
   end
-  # Log the authorizing user in.
-  self.current_user = @auth.teacher
 
-  render :text => "Welcome, #{current_user.name}."
-end
+  def create
+    auth_hash = request.env['omniauth.auth']
+    #render :text => auth_hash.inspect
+
+  @authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
+  if @authorization
+    render :text => "Welcome back #{@authorization.teacher.name}! You have already signed up."
+  else
+    #20.times {puts "\n"}
+    #teacher = Teacher.new :name => auth_hash["user_info"]["name"], :email => auth_hash["user_info"]["email"]
+    teacher = Teacher.new :name => auth_hash["name"], :email => auth_hash["email"]
+    teacher.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+    teacher.save
+
+    render :text => "Hi #{teacher.name}! You've signed up."
+  end
+
+  end
+
+  def failure
+  end
 end

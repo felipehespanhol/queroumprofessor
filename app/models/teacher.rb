@@ -1,8 +1,7 @@
 class Teacher < ActiveRecord::Base
-  #attr_accessible :name
+  attr_accessible :email, :name
   has_many :authorizations
+  validates :name, :email, :presence => true
 
-  def self.create_from_hash!(hash)
-    create(:name => hash['user_info']['name'])
-  end
+
 end
