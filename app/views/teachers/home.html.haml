@@ -6,10 +6,8 @@
   - if session[:teacher]
     = "Olá #{session[:teacher]}"
 
-=form_tag "/teachers/search_results" do
-
-  .home-search-box.form-inline.center
-    De &nbsp;#{text_field :speciality, :name}&nbsp;em&nbsp;#{text_field :location, :name}&nbsp;#{button_tag ">", :class => "btn btn-primary"}
+.home-search-box
+  = render :partial => 'search_fields'
 
 %hr
 

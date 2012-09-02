@@ -1,2 +1,17 @@
-%h1 Teachers#search_results
-%p Find me in app/views/teachers/search_results.html.haml
+.min_search_bar
+  = render :partial => "search_fields"
+
+%p
+
+- if @teachers.nil?
+  %p Infelizmente nenhum professor foi encontrado em sua cidade... 
+
+- else
+  %p Encontre seu professor:
+
+  %hr
+  - @teachers.each do |teacher|
+    
+    .span2
+      =render :partial => "teacher_info", :locals => {:teacher => teacher}
+
