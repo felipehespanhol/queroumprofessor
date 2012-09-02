@@ -1,4 +1,12 @@
 Hespanhol::Application.routes.draw do
+  root :to => "teachers#home"
+
+  get "teachers/search_results"
+
+  get "teachers/home"
+
+  get "teachers/search_result"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -6,7 +6,14 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'therubyracer'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+
+gem 'haml'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,6 +25,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'

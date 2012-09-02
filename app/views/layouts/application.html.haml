@@ -1,0 +1,20 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Quero Um Professor
+    = stylesheet_link_tag 'application', :media => "all"
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body 
+    .container
+      .row
+        .span-12
+        %h1 Quero Um Professor!
+      .row
+        .span12
+          = yield
+          
+    #container
+    #footer
