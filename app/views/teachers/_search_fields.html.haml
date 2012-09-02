@@ -1,3 +1,3 @@
-=form_tag "/teachers/search_results", :method => :get do
+=form_tag "/teachers/search_results", :method => :get, :id => "search_teacher_form" do
   .search_fields.form-inline
     De #{text_field :speciality, :name} em #{text_field :location, :name, :value => @city_with_abbr} #{button_tag ">", :class => "btn btn-primary"}
