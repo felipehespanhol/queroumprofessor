@@ -10,13 +10,15 @@ class SessionsController < ApplicationController
   if @authorization
     render :text => "Welcome back #{@authorization.teacher.name}! You have already signed up."
   else
-    #20.times {puts "\n"}
-    #teacher = Teacher.new :name => auth_hash["user_info"]["name"], :email => auth_hash["user_info"]["email"]
-    teacher = Teacher.new :name => auth_hash["name"], :email => auth_hash["email"]
+    #auth_hash object has => provider,uid,info,credentials,  extra
+    teacher = Teacher.new :name => auth_hash["info"]["name"]
     teacher.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
     teacher.save
 
-    render "teachers/home"
+    session[:teacher] = teacher.name
+
+    #render "teachers/home"
+    redirect_to  :controller => "teachers", :action => "home"
     #render :text => "Hi #{teacher.name}! You've signed up."
   end
 
