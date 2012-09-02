@@ -7,8 +7,15 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
 
-  %body 
+  %body
     .login
-    .container
+      .container
+        .header
+          #user_navigation
+            %ul
+              %li
+                %a{:href => "/auth/twitter"}= t{"auth-twitter", :default=>"twitter"}
+
+
       = yield
-          
+
