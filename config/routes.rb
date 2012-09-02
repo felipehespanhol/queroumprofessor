@@ -1,6 +1,15 @@
 Hespanhol::Application.routes.draw do
 
   match '/auth/:provider/callback', :to => 'sessions#create'
+
+  root :to => "teachers#home"
+
+  get "teachers/search_results"
+
+  get "teachers/home"
+
+  get "teachers/search_result"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
