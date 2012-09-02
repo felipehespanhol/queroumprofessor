@@ -1,5 +1,5 @@
 class Teacher < ActiveRecord::Base
-  attr_accessible :email, :name, :speciality, :cidade
+  attr_accessible :email, :name, :speciality, :cidade, :speciality_id, :contact
 
   has_many :authorizations
   belongs_to :cidade

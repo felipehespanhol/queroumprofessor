@@ -8,4 +8,15 @@ class CidadesController < ApplicationController
     list = cidades.map {|c| {:id => c.id, :label => "#{c.nome}, #{c.estado.sigla}", :name => c.nome}}
     render :json => list
   end
+
+  def find_by_estado
+    respond_to do |format|
+      format.html { render :nothing }
+      format.json do
+        @cidades = Cidade.where("estado_id = ?", params[:estado_id])
+        render :json => @cidades
+      end
+    end
+  end
+    
 end

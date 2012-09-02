@@ -13,4 +13,19 @@ class TeachersController < ApplicationController
     end
   end
 
+  def edit
+    @teacher = Teacher.find(params[:id])
+    @estados = Estado.all
+    @specialities = Speciality.order("name")
+  end
+
+  def update
+    @teacher = Teacher.find(params[:id])
+    if @teacher.update_attributes(params[:teacher])
+      redirect_to root_path, :notice => "Dados atualizados com sucesso"
+    else
+      render :action => "edit"
+    end
+  end
+
 end

@@ -1,0 +1,49 @@
+.center
+  = image_tag "queroumprofessor44.png"
+  %h3 Encontre seu professor particular com rapidez
+
+.home-header
+  - if session[:teacher]
+    = "Olá #{session[:teacher]}"
+
+.messages
+
+=form_for @teacher, :html => {:class => "form-horizontal"} do |f|
+
+  %legend Editar dados do perfil no Quero Um Professor
+
+  .control-group
+    = f.label :name, "Nome", :class => "control-label"
+    .controls
+      = f.text_field :name
+
+  .control-group
+    = f.label :email, "Email", :class => "control-label"
+    .controls
+      = f.text_field :email
+
+  .control-group
+    = f.label :speciality_id, "Especialidade", :class => "control-label"
+    .controls
+      = f.collection_select :speciality_id, @specialities, :id, :name, :include_blank => "Escolha sua especialidade"
+
+  .control-group
+    = label_tag :estado_id, "Estado", :class => "control-label"
+    .controls
+      = collection_select :estado, :id, @estados, :id, :nome, :include_blank => "Escolha um estado"
+
+  .control-group
+    = f.label :cidade, "Cidade", :class => "control-label"
+    .controls
+      #empty_cities
+        = select_tag ""
+
+  .control-group
+    = f.label :contact, "Contato", :class => "control-label"
+    .controls
+      = f.text_area :contact, :rows => 3
+
+  .control-group
+    .controls
+      = f.submit "Atualizar Dados", :class => "btn btn-primary"
+

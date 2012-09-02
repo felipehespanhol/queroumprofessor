@@ -1,5 +1,6 @@
 Hespanhol::Application.routes.draw do
   get "cidades/find"
+  match "cidades/find_by_estado", :to => "cidades#find_by_estado"
 
   get "specialities/find"
 
@@ -11,10 +12,9 @@ Hespanhol::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#failure'
 
   get "teachers/search_results"
-
   get "teachers/home"
-
   get "teachers/search_result"
+  resources :teachers, :only => [:edit, :update]
 
 
   # The priority is based upon order of creation:

@@ -21,5 +21,10 @@ $ ->
       $("#messages").html("<div class='alert alert-block'>#{message}</div>")
       event.preventDefault()
 
-      
+  $("#estado_id").change ()->
+    estado_id = $(this).val()
+    select = $("<select id='teacher_cidade_id' name='teacher[cidade_id]'></select>")
+    $.get '/cidades/find_by_estado.json', {"estado_id": estado_id}, (data)-> 
+      $.each data, (index, cidade)-> select.append("<option value='#{cidade.id}'>#{cidade.nome}</option>")
+    $("#empty_cities").html(select)
 	
