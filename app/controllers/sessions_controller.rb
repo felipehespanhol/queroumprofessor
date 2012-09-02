@@ -16,7 +16,8 @@ class SessionsController < ApplicationController
     teacher.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
     teacher.save
 
-    render :text => "Hi #{teacher.name}! You've signed up."
+    render "teachers/home"
+    #render :text => "Hi #{teacher.name}! You've signed up."
   end
 
   end

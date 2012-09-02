@@ -9,13 +9,9 @@
 
   %body
     .login
-      .container
-        .header
-          #user_navigation
-            %ul
-              %li
-                %a{:href => "/auth/twitter"}= t{"auth-twitter", :default=>"twitter"}
-
-
+      %h1
+        =session[:id]
+        %a{:href => "/auth/twitter"} Twitter
+    .container
       = yield
 
