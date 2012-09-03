@@ -21,10 +21,20 @@ $ ->
       $("#messages").html("<div class='alert alert-block'>#{message}</div>")
       event.preventDefault()
 
-  $("#estado_id").change ()->
-    estado_id = $(this).val()
+  update_estado = () ->
+    estado_id = $("#teacher_estado_id").val()
     select = $("<select id='teacher_cidade_id' name='teacher[cidade_id]'></select>")
+    selected = parseInt $("#cidade_id").val() 
     $.get '/cidades/find_by_estado.json', {"estado_id": estado_id}, (data)-> 
-      $.each data, (index, cidade)-> select.append("<option value='#{cidade.id}'>#{cidade.nome}</option>")
-    $("#empty_cities").html(select)
-	
+      $.each data, (index, cidade)-> 
+        if selected is cidade.id
+          select.append("<option value='#{cidade.id}' selected='selected'>#{cidade.nome}</option>")
+        else
+          select.append("<option value='#{cidade.id}'>#{cidade.nome}</option>")
+        $("#empty_cities").html(select)
+  
+  if $("#teacher_estado_id")
+    update_estado()
+
+  $("#teacher_estado_id").change ()->
+    update_estado()

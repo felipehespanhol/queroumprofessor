@@ -30,10 +30,11 @@
   .control-group
     = label_tag :estado_id, "Estado", :class => "control-label"
     .controls
-      = collection_select :estado, :id, @estados, :id, :nome, :include_blank => "Escolha um estado"
+      = f.collection_select :estado_id, @estados, :id, :nome, :include_blank => "Escolha um estado"
 
   .control-group
     = f.label :cidade, "Cidade", :class => "control-label"
+    = hidden_field :cidade, :id, :value => @teacher.cidade_id
     .controls
       #empty_cities
         = select_tag ""

@@ -4,6 +4,8 @@
 
 .home-header
   - if session[:teacher]
+    = link_to "logout", "/logout"
+    %br
     = "Olá #{session[:teacher]}"
 
 .home-search-box
@@ -13,7 +15,8 @@
         = flash[:notice]
   = render :partial => 'search_fields'
 
-%hr
+/
+  %hr
 
 %p.center
   É um professor e quer anunciar? Escolha sua forma de login:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902201850) do
+ActiveRecord::Schema.define(:version => 20120902225044) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20120902201850) do
     t.integer  "cidade_id"
     t.integer  "speciality_id"
     t.string   "contact"
+    t.integer  "estado_id"
   end
 
 end

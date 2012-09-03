@@ -1,15 +1,20 @@
 .min_search_bar
+  = image_tag "queroumprofessor_branco.png"
   = render :partial => "search_fields"
 
 %p
 
-- if @teachers.nil?
-  %p Infelizmente nenhum professor foi encontrado em sua cidade... 
+- if @teachers.nil? || @teachers.empty?
+  .center
+    %br
+    .alert.alert-box
+      Infelizmente nenhum professor foi encontrado em sua cidade... 
 
 - else
-  %p Encontre seu professor:
+  %h3 Encontre seu professor:
 
-  %hr
+  /
+    %hr
   - @teachers.each do |teacher|
     
     .span2
