@@ -1,13 +1,32 @@
 .teacher_info
-  %dl
-    %dt Nome
-    %dd
+  .teacher_name
+    %i.icon-user
+    %span.lead
       = teacher.name
-    %dt Especialidade
-    %dd
-      = teacher.speciality.name
-    %dt Cidade
-    %dd
-      = teacher.city_with_abbr
-    
+  %hr
+  .teacher_data
+    .clear
+      %p
+      %div
+        %i.icon-envelope
+        %span= teacher.email
+      %div
+        %i.icon-signal
+        %span= teacher.tel
+    .left-float
+      %dl
+        %dt Especialidade
+        %dd= teacher.speciality.name
+    .right-float
+      %dl
+        %dt Cidade
+        %dd= teacher.city_with_abbr
+    .clear
+      %dl
+        %dt Descrição
+        %dd
+          = teacher.description
+
+
+  
 

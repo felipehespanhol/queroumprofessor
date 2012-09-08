@@ -18,6 +18,11 @@
       = f.text_field :name
 
   .control-group
+    = f.label :tel, "Telefone", :class => "control-label"
+    .controls
+      = f.text_field :tel
+
+  .control-group
     = f.label :email, "Email", :class => "control-label"
     .controls
       = f.text_field :email
@@ -40,9 +45,9 @@
         = select_tag ""
 
   .control-group
-    = f.label :contact, "Contato", :class => "control-label"
+    = f.label :description, "Descriçao", :class => "control-label"
     .controls
-      = f.text_area :contact, :rows => 3
+      = f.text_area :description, :rows => 4
 
   .control-group
     .controls

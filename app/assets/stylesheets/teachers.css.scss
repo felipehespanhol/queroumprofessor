@@ -63,3 +63,29 @@
   /*background-color: #D7DFDA;*/
 }
 
+.teacher_info {
+  height: 250px;
+  border: 4px outset #333333;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px #888888;
+  padding-left: 10px;
+  padding-right: 10px;
+  hr { 
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #333333;
+  }
+  i {
+    margin-right: 10px;
+  }
+  .teacher_name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .teacher_data {
+    .left-float, .right-float {
+      width: 50%;
+    }
+  }
+}

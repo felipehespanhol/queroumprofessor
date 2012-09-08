@@ -1,5 +1,5 @@
 .min_search_bar
-  = image_tag "queroumprofessor_branco.png"
+  = link_to image_tag("queroumprofessor_branco.png"), root_path
   = render :partial => "search_fields"
 
 %p
@@ -15,8 +15,11 @@
 
   /
     %hr
-  - @teachers.each do |teacher|
+
+  - @teachers.each_slice(3).to_a.each do |teacher_chunk|
     
-    .span2
-      =render :partial => "teacher_info", :locals => {:teacher => teacher}
+    .row
+      -teacher_chunk.each do |teacher|
+        .span4
+          =render :partial => "teacher_info", :locals => {:teacher => teacher}
 
