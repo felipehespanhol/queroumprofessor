@@ -5,26 +5,27 @@
       = teacher.name
   %hr
   .teacher_data
-    .clear
-      %p
-      %div
-        %i.icon-envelope
-        %span= teacher.email
-      %div
-        %i.icon-signal
-        %span= teacher.tel
-    .left-float
+    .teacher_data_top.clear
+      .teacher_data_contacts
+        %div
+          %i.icon-envelope
+          %span= teacher.email
+        %div
+          %i.icon-signal
+          %span= teacher.tel
+    .teacher_data_left_column
       %dl
-        %dt Especialidade
-        %dd= teacher.speciality.name
-    .right-float
-      %dl
-        %dt Cidade
-        %dd= teacher.city_with_abbr
-    .clear
+        %dt Especialidade(s)
+        %dd.teachers_data_specialities= teacher_specialities(teacher)
+    /
+      .teacher_data_right_column
+        %dl
+          %dt Cidade
+          %dd.teacher_data_city= teacher.city_with_abbr
+    .teacher_data_bottom.clear
       %dl
         %dt Descrição
-        %dd
+        %dd.description_field
           = teacher.description
 
 

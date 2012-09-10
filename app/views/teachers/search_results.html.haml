@@ -8,18 +8,11 @@
   .center
     %br
     .alert.alert-box
-      Infelizmente nenhum professor foi encontrado em sua cidade... 
+      Ainda não há nenhum professor de #{params[:speciality][:name]} cadastrado na sua cidade...
 
 - else
   %h3 Encontre seu professor:
 
-  /
-    %hr
-
-  - @teachers.each_slice(3).to_a.each do |teacher_chunk|
-    
-    .row
-      -teacher_chunk.each do |teacher|
-        .span4
-          =render :partial => "teacher_info", :locals => {:teacher => teacher}
+  - @teachers.each do |teacher|
+    =render :partial => "teacher_info", :locals => {:teacher => teacher}
 

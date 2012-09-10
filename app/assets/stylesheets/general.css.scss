@@ -12,19 +12,29 @@
 
 .ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
 
+.container {
+  min-height: 600px;
+  margin-bottom: 50px;
+}
+
 .center {
   text-align: center;
 }
 
 .left-float {
   float: left;
+  width: 50%;
 }
 
 .right-float {
   float: right;
+  width: 50%;
 }
 
 .clear {
   clear: both;
 }
 
+.red {
+  color: red;
+}

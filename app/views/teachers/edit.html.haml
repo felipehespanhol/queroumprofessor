@@ -1,3 +1,5 @@
+= hidden_field :teacher, :id, :value => @teacher.id
+
 .center
   = image_tag "queroumprofessor44.png"
   %h3 Encontre seu professor particular com rapidez
@@ -8,48 +10,63 @@
 
 .messages
 
-=form_for @teacher, :html => {:class => "form-horizontal"} do |f|
 
-  %legend Editar dados do perfil no Quero Um Professor
+%legend Editar dados do perfil no Quero Um Professor
 
-  .control-group
-    = f.label :name, "Nome", :class => "control-label"
-    .controls
-      = f.text_field :name
 
-  .control-group
-    = f.label :tel, "Telefone", :class => "control-label"
-    .controls
-      = f.text_field :tel
+.left-float
+  =form_for @teacher, :html => {:class => "form-horizontal"} do |f|
 
-  .control-group
-    = f.label :email, "Email", :class => "control-label"
-    .controls
-      = f.text_field :email
+    .control-group
+      = f.label :name, "Nome", :class => "control-label"
+      .controls
+        = f.text_field :name
 
-  .control-group
-    = f.label :speciality_id, "Especialidade", :class => "control-label"
-    .controls
-      = f.collection_select :speciality_id, @specialities, :id, :name, :include_blank => "Escolha sua especialidade"
+    .control-group
+      = f.label :tel, "Telefone", :class => "control-label"
+      .controls
+        = f.text_field :tel
 
-  .control-group
-    = label_tag :estado_id, "Estado", :class => "control-label"
-    .controls
-      = f.collection_select :estado_id, @estados, :id, :nome, :include_blank => "Escolha um estado"
+    .control-group
+      = f.label :email, "Email", :class => "control-label"
+      .controls
+        = f.text_field :email
 
-  .control-group
-    = f.label :cidade, "Cidade", :class => "control-label"
-    = hidden_field :cidade, :id, :value => @teacher.cidade_id
-    .controls
-      #empty_cities
-        = select_tag ""
+    .control-group
+      = label_tag :estado_id, "Estado", :class => "control-label"
+      .controls
+        = f.collection_select :estado_id, @estados, :id, :nome, :include_blank => "Escolha um estado"
 
-  .control-group
-    = f.label :description, "Descriçao", :class => "control-label"
-    .controls
-      = f.text_area :description, :rows => 4
+    .control-group
+      = f.label :cidade, "Cidade", :class => "control-label"
+      = hidden_field :cidade, :id, :value => @teacher.cidade_id
+      .controls
+        #empty_cities
+          = select_tag ""
 
-  .control-group
-    .controls
-      = f.submit "Atualizar Dados", :class => "btn btn-primary"
+    .control-group
+      = f.label :description, "Descriçao", :class => "control-label"
+      .controls
+        = f.text_area :description, :rows => 4
+
+    .control-group
+      .controls
+        = f.submit "Atualizar Dados", :class => "btn btn-primary"
+
+.right-float
+
+  Sou professor de: 
+  %span#teacher_specialities_list
+    - @teacher.specialities.each do |s|
+      = render :partial => 'teacher_speciality_button', :locals => {:s => s, :teacher => @teacher}
+
+  .select_specialities
+    = collection_select :specialities_list, :id, @specialities, :id, :name, {}, {:size => 10}
+    %br
+    = button_tag "Incluir especialidade", {:id => "include_speciality_button"}
+        
+.clear
+
+
+
 

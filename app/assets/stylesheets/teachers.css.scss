@@ -14,6 +14,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  white-space: nowrap;
   color: #ffffff;
   background-color: #333333;
   padding-top: 10px;
@@ -64,10 +65,13 @@
 }
 
 .teacher_info {
-  height: 250px;
-  border: 4px outset #333333;
+  height: 240px;
+  width: 250px;
+  border: 4px solid #333333;
   border-radius: 10px;
   box-shadow: 10px 10px 5px #888888;
+  margin: 10px;
+  float: left;
   padding-left: 10px;
   padding-right: 10px;
   hr { 
@@ -75,17 +79,73 @@
     margin-bottom: 5px;
     border: 1px solid #333333;
   }
-  i {
-    margin-right: 10px;
-  }
-  .teacher_name {
+  i { margin-right: 10px; }
+  .teacher_name, .teacher_data_top {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
   .teacher_data {
-    .left-float, .right-float {
-      width: 50%;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    dl {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .teacher_data_top {
+      width: 100%;
+      height: 45px;
+      padding-bottom: 5px;
+    }
+    .teacher_data_left_column {
+      //width: 140px;
+      width: 100%;
+      height: 40px;
+      float: left;
+      padding-top: 5px;
+      padding-right: 5px;
+      padding-bottom: 5px;
+      .teachers_data_specialities {
+        overflow-y: auto;
+      }
+    } 
+    .teacher_data_right_column {
+      width: 140px;
+      height: 60px;
+      float: right;
+      padding-top: 5px;
+      padding-left: 5px;
+      padding-bottom: 5px;
+    } 
+    .teacher_data_bottom {
+      width: 100%;
+      height: 80px;
+      padding-top: 5px;
+    }
+    .description_field {
+      height: 60px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
+
+.teacher_speciality {
+  margin-right: 2px;
+  .remove_speciality {
+    color: #ffffff;
+  }
+  .remove_speciality:hover {
+    color: red;
+    cursor: pointer;
+  }
+}
+
+.select_specialities {
+  margin-top: 30px;
+}
+
+
+

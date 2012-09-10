@@ -15,16 +15,4 @@
         = flash[:notice]
   = render :partial => 'search_fields'
 
-/
-  %hr
-
-%p.center
-  É um professor e quer anunciar? Escolha sua forma de login:
-  %span.login-icons
-    = link_to image_tag("social-twitter-box-blue-icon.png"), "/auth/twitter"
-    =image_tag "social-facebook-box-blue-icon.png"
-    = link_to image_tag("GMail-icon.png"), "/auth/google_oauth2"
-  -if session[:teacher_id]
-    %br
-    = link_to "Editar perfil", edit_teacher_path(session[:teacher_id])
 

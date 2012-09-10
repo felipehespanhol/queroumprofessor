@@ -11,10 +11,12 @@ Hespanhol::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure', :to => 'sessions#failure'
 
+  resources :teachers, :only => [:edit, :update]
   get "teachers/search_results"
   get "teachers/home"
   get "teachers/search_result"
-  resources :teachers, :only => [:edit, :update]
+  match "teachers/:teacher_id/add_speciality/:speciality_id", :to => "teachers#add_speciality"
+  match "teachers/:teacher_id/remove_speciality/:speciality_id", :to => "teachers#remove_speciality"
 
 
   # The priority is based upon order of creation:
