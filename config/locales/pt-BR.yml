@@ -1,4 +1,11 @@
-pt-BR:
+pt:
+  views:
+    pagination:
+      first: "Primeira"
+      last: "Última"
+      previous: "&lt;"
+      next: ">"
+      truncate: "&hellip;"
   date:
     abbr_day_names:
     - Dom

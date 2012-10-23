@@ -16,3 +16,7 @@
   - @teachers.each do |teacher|
     =render :partial => "teacher_info", :locals => {:teacher => teacher}
 
+  .clear
+    %br
+    = paginate @teachers
+

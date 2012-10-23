@@ -7,8 +7,9 @@ class TeachersController < ApplicationController
     @city_with_abbr = "#{params[:location] && params[:location][:name]}"
     @city = Cidade.where("nome = ?", get_clean_city_name(@city_with_abbr)).first
     @speciality = Speciality.where("name = ?", "#{params[:speciality] && params[:speciality][:name]}").first
+    @teachers = []
     if @speciality && @city
-      @teachers = Teacher.joins(:specialities).where(["specialities.id = ? and teachers.cidade_id = ?", @speciality.id, @city.id])
+      @teachers = Teacher.joins(:specialities).where(["specialities.id = ? and teachers.cidade_id = ?", @speciality.id, @city.id]).page params[:page]
     end
   end
 
