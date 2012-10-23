@@ -66,9 +66,4 @@ ActiveRecord::Schema.define(:version => 20120908235453) do
     t.integer  "cidade_id"
   end
 
-  create_table "teachers_specialities", :id => false, :force => true do |t|
-    t.integer "teacher_id"
-    t.integer "speciality_id"
-  end
-
 end

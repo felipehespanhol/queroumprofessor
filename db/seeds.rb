@@ -12,9 +12,12 @@
 specialities = [
   "Guitarra",
   "Violão",
-  "Inglês",
+  "Piano", 
   "Alemão",
-  "Espanhol"
+  "Espanhol", 
+  "Francês",
+  "Inglês",
+  "Dança de Salão" 
 ]
 
 specialities.each{ |name| Speciality.create(:name => name) } 
