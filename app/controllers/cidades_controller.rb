@@ -1,7 +1,7 @@
 class CidadesController < ApplicationController
   def find
     if params[:term]
-      cidades = Cidade.where("nome like ?", "%#{params[:term]}%")
+      cidades = Cidade.where("nome like ?", "#{params[:term]}%")
     else
       cidades = Cidade.all
     end
