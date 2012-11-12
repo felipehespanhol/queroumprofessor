@@ -18,6 +18,7 @@ gem 'therubyracer'
 
 gem 'haml'
 gem 'haml-rails'
+gem 'coffee-filter' # For haml embeded coffeescript
 
 gem 'kaminari'
 

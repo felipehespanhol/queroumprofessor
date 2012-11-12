@@ -1,15 +1,3 @@
-/*
-#header {
-  h1 { text-align: center; };
-}
-
-#container {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-*/
-
 .ui-autocomplete-loading { 
   background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; 
 }
@@ -19,8 +7,29 @@
 }
 
 .container {
-  min-height: 600px;
+  width: 80%;
+  height: 100%;
+}
+
+.header {
+  width: 100%;
   margin-bottom: 50px;
+  text-align: center;
+}
+
+.content {
+  //min-height: 600px;
+  margin-bottom: 50px;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  //position: fixed;
+  //bottom: 0;
+  background-color: #000000;
+  color: white;
+  padding-top: 10px;
 }
 
 .center {
@@ -47,5 +56,5 @@
 
 .pagination {
   text-align: center;
-  width: 860px;
+  //width: 860px;
 }

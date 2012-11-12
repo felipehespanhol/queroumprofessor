@@ -1,3 +1,8 @@
+:coffeescript
+  $ ->
+    $(".container").css("width", "100%")
+    $(".header").remove()
+
 .min_search_bar
   = link_to image_tag("queroumprofessor_branco.png"), root_path
   = render :partial => "search_fields"
@@ -11,12 +16,15 @@
       Ainda não há nenhum professor de #{params[:speciality][:name]} cadastrado na sua cidade...
 
 - else
-  %h3 Encontre seu professor:
+  // %h3 Encontre seu professor:
+  .search_results
 
-  - @teachers.each do |teacher|
-    =render :partial => "teacher_info", :locals => {:teacher => teacher}
+    - @teachers.each do |teacher|
+      =render :partial => "teacher_info", :locals => {:teacher => teacher}
 
-  .clear
-    %br
-    = paginate @teachers
+    .clear
+      %br
+
+    .pagination
+      = paginate @teachers
 
