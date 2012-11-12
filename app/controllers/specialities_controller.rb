@@ -1,7 +1,7 @@
 class SpecialitiesController < ApplicationController
   def find
     if params[:term]
-      @specialities = Speciality.where("name like ?", "%#{params[:term]}%")
+      @specialities = Speciality.where("name like ?", "#{params[:term]}%")
     else
       @specialities = Speciality.all
     end
