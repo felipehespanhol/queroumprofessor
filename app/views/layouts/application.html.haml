@@ -27,7 +27,7 @@
         %p.center
           -if session[:teacher_id]
             %br
-            = link_to "Editar perfil", edit_teacher_path(session[:teacher_id])
+            = (link_to "Editar perfil", edit_teacher_path(session[:teacher_id])) + "  |  " + (link_to "Logout", "/logout")
           -else
             É um professor e quer anunciar? Escolha sua forma de login:
             %span.login-icons

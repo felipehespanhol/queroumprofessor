@@ -1,13 +1,12 @@
 :coffeescript
   $ ->
-    $(".container").css("width", "100%")
     $(".header").remove()
 
 .min_search_bar
   = link_to image_tag("queroumprofessor_branco.png"), root_path
   = render :partial => "search_fields"
 
-%p
+%div{:style => "height: 60px"}
 
 - if @teachers.nil? || @teachers.empty?
   .center
