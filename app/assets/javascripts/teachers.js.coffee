@@ -4,7 +4,6 @@
 #
 
 $ ->
-  $(".container").css("width", "100%")
   $("#speciality_name").autocomplete
     source: "/specialities/find"
     select: (event, ui) -> $("#speciality_name").val(ui.item.name)

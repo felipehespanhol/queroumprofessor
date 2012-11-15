@@ -1,10 +1,5 @@
-:css
-  .footer { position: fixed; bottom: 0; }
-
 .home-header
   - if session[:teacher]
-    = link_to "logout", "/logout"
-    %br
     = "Olá #{session[:teacher]}"
 
 .home-search-box
