@@ -6,7 +6,7 @@ class Teacher < ActiveRecord::Base
   belongs_to :cidade
   has_and_belongs_to_many :specialities, :uniq => true
 
-  validates :name, :presence => true
+  validates :name, :email, :tel, :estado_id, :cidade_id, :presence => true, :on => :update
   validate :cidade_belongs_to_estado
 
   def self.create_with_omniauth(auth)
