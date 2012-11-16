@@ -1,30 +1,17 @@
 class SessionsController < ApplicationController
   def new
   end
+
+  def create
+    #raise request.env['omniauth.auth'].to_yaml
+    auth = request.env['omniauth.auth']
+    #auth_hash = request.env['omniauth.auth']
+
+    teacher = Teacher.find_by_provider_and_uid(auth['provider'], auth['uid']) || Teacher.create_with_omniauth(auth)
+    session[:teacher_id] = teacher.id
+
 =begin
-  def create
-    auth_hash = request.env['omniauth.auth']
-    #render :text => auth_hash.inspect
-
-  @authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
-  if @authorization
-    session[:teacher] = @authorization.teacher.name #  render :text => "Welcome back #{@authorization.teacher.name}! You have already signed up."
-  else
-    #iauth_hash object has => provider,uid,info,credentials,  extra
-    teacher = Teacher.new :name => auth_hash["info"]["name"]
-    teacher.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
-    teacher.save
-
-    session[:teacher] = teacher.name
-
-  end
-
-    redirect_to  :controller => "teachers", :action => "home"
-  end
-=end
-  def create
-    auth_hash = request.env['omniauth.auth']
-
+    # First try with omniauth
     if session[:teacher_id]
       # Means our user is signed in. Add the authorization to the user
       Teacher.find(session[:teacher_id]).add_provider(auth_hash)
@@ -39,19 +26,21 @@ class SessionsController < ApplicationController
       session[:teacher] = auth.teacher.name
       #render :text => "Welcome #{auth.teacher.name}!"
     end
+=end
 
-    redirect_to  :controller => "teachers", :action => "home"
+    redirect_to root_url, :notice => "Logado com sucesso. Bem-vindo, #{teacher.name}."
   end
 
   def destroy
     session[:teacher_id] = nil
     session[:teacher] = nil
     #render :text => "You've logged out!"
-    redirect_to  :controller => "teachers", :action => "home"
+    redirect_to root_url
   end
 
   def failure
-    render :text => "Sorry, but you didn't allow access to our app!"
+    #render :text => "Sorry, but you didn't allow access to our app!"
+    redirect_to root_url
   end
 
 end

@@ -6,8 +6,16 @@ class Teacher < ActiveRecord::Base
   belongs_to :cidade
   has_and_belongs_to_many :specialities, :uniq => true
 
-  validates :name, :email, :presence => true
+  validates :name, :presence => true
   validate :cidade_belongs_to_estado
+
+  def self.create_with_omniauth(auth)
+    create! do |teacher|
+      teacher.provider = auth['provider']
+      teacher.uid = auth['uid']
+      teacher.name = auth['info']['name']
+    end
+  end
 
   def cidade_belongs_to_estado
     if estado_id && cidade_id
@@ -24,6 +32,8 @@ class Teacher < ActiveRecord::Base
     "#{cidade.nome}, #{cidade.estado.sigla}"
   end
 
+=begin
+  # First try with omniauth
   def add_provider(auth_hash)
     # Check if the provider already exists, so we don't add it twice
     unless authorizations.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
@@ -31,5 +41,6 @@ class Teacher < ActiveRecord::Base
       Authorization.create :teacher_id => self.id, :provider => auth_hash["provider"], :uid => auth_hash["uid"]
     end
   end
+=end
 
 end
