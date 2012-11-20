@@ -219,10 +219,12 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   mysql2
+  oauth2
   omniauth
   omniauth-facebook
   omniauth-google-apps
   omniauth-google-oauth2
+  omniauth-oauth2
   omniauth-twitter
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)

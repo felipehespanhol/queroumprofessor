@@ -2,7 +2,14 @@
 !!!
 %html
   %head
-    %title Quero Um Professor
+    %title Quero Um Professor | Busca de professores particulares
+    %meta{:name => "description", :content => "Busca de professores particulares"}
+    %meta{:name => "keywords", :content => "aula particular, professor particular"}
+    %meta{:name => "robots", :content => "index, nofollow"}
+    %meta{:name => "author", :content => "Felipe Hespanhol"}
+    %meta{:name => "reply-to", :content => "felipeghespanhol@gmail.com"}
+    %meta{:"http-equiv" => "content-language", :content => "pt-br"}
+    %meta{:"http-equiv" => "content-language", :content => "text/html; charset=utf-8"}
     = stylesheet_link_tag 'application', :media => "all"
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -30,12 +37,13 @@
               = link_to image_tag("social-facebook-box-blue-icon.png"), "/auth/facebook"
               = link_to image_tag("GMail-icon.png"), "/auth/google_oauth2"
         .site_info
-          %span.site_info_items
-            Contato 
-          %span.site_info_items
-            Ajuda
+          /
+            %span.site_info_items
+              Contato 
+            %span.site_info_items
+              Ajuda
           .copyright
-            © QueroUmProfessor
+            QueroUmProfessor © 2012
 
 
 
