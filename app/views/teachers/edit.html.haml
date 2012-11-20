@@ -1,34 +1,48 @@
 = hidden_field :teacher, :id, :value => @teacher.id
 
-.messages
+.messages.center
+  -if flash[:warning]
+    .alert.alert-warning
+      =flash[:warning]
+
 
 %legend Editar dados do perfil no Quero Um Professor
-
 
 .left-float
   =form_for @teacher, :html => {:class => "form-horizontal"} do |f|
 
-    .control-group
+    .control-group{:class => "#{'error' if @teacher.errors[:name].any?}"}
       = f.label :name, "Nome", :class => "control-label"
       .controls
         = f.text_field :name
+        -if @teacher.errors[:name].any?
+          -@teacher.errors[:name].each do |error|
+            %span.help-inline= 'Nome ' + error
 
-    .control-group
+    .control-group{:class => "#{'error' if @teacher.errors[:tel].any?}"}
       = f.label :tel, "Telefone", :class => "control-label"
       .controls
         = f.text_field :tel
+        -if @teacher.errors[:tel].any?
+          -@teacher.errors[:tel].each do |error|
+            %span.help-inline= 'Telefone ' + error
 
-    .control-group
+    .control-group{:class => "#{'error' if @teacher.errors[:email].any?}"}
       = f.label :email, "Email", :class => "control-label"
       .controls
         = f.text_field :email
+        -if @teacher.errors[:email].any?
+          -@teacher.errors[:email].each do |error|
+            %span.help-inline= 'Email ' + error
 
-    .control-group
+    .control-group{:class => "#{'error' if @teacher.errors[:estado_id].any?}"}
       = label_tag :estado_id, "Estado", :class => "control-label"
       .controls
         = f.collection_select :estado_id, @estados, :id, :nome, :include_blank => "Escolha um estado"
+        -if @teacher.errors[:estado_id].any?
+          %span.help-inline Campo não pode ficar vazio
 
-    .control-group
+    .control-group{:class => "#{'error' if @teacher.errors[:cidade_id].any?}"}
       = f.label :cidade, "Cidade", :class => "control-label"
       = hidden_field :cidade, :id, :value => @teacher.cidade_id
       .controls

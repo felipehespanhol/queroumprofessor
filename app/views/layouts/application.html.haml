@@ -8,11 +8,6 @@
     = csrf_meta_tags
 
   %body
-    /
-      .login
-        = link_to image_tag("social-twitter-box-blue-icon.png"), "/auth/twitter"
-        = image_tag "social-facebook-box-blue-icon.png"
-        = image_tag "GMail-icon.png"
 
     .container
 
@@ -23,16 +18,24 @@
       .content
         = yield
 
-      .footer
-        %p.center
+      .footer.center
+        %div
           -if session[:teacher_id]
             %br
-            = (link_to "Editar perfil", edit_teacher_path(session[:teacher_id])) + "  |  " + (link_to "Logout", "/logout")
+            = (link_to "Editar perfil#{' (Ainda sem especialidades cadastradas)' if current_user && !current_user.specialities.any?}", edit_teacher_path(session[:teacher_id])) + "  |  " + (link_to "Logout", "/logout")
           -else
-            É um professor e quer anunciar? Escolha sua forma de login:
+            É um professor e quer anunciar? Escolha sua forma de login ou cadastre-se usando um dos serviços:
             %span.login-icons
               = link_to image_tag("social-twitter-box-blue-icon.png"), "/auth/twitter"
-              =image_tag "social-facebook-box-blue-icon.png"
+              = link_to image_tag("social-facebook-box-blue-icon.png"), "/auth/facebook"
               = link_to image_tag("GMail-icon.png"), "/auth/google_oauth2"
+        .site_info
+          %span.site_info_items
+            Contato 
+          %span.site_info_items
+            Ajuda
+          .copyright
+            © QueroUmProfessor
+
 
 

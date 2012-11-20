@@ -21,10 +21,14 @@ class TeachersController < ApplicationController
 
   def update
     @teacher = Teacher.find(params[:id])
+
     if @teacher.update_attributes(params[:teacher])
       redirect_to root_path, :notice => "Dados atualizados com sucesso"
     else
-      render :action => "edit"
+      @estados = Estado.all
+      @specialities = Speciality.order("name")
+      flash[:warning] = "Você ainda não informou suas especialidades." if @teacher.specialities.empty?
+      render "edit", :notice => "teste"
     end
   end
 

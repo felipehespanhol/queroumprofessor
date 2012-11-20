@@ -40,6 +40,19 @@ html, body {
   background-color: #000000;
   color: white;
   padding-top: 10px;
+  .site_info {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    .site_info_items {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+    .copyright {
+      margin-top: 5px;
+    }
+  }
 }
 
 .center {
