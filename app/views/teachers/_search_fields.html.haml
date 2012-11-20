@@ -1,3 +1,7 @@
 =form_tag "/teachers/search_results", :method => :get, :id => "search_teacher_form" do
   .search_fields.form-inline
-    De #{text_field :speciality, :name, :title => "Escolha a especialidade do professor particular. Ex: 'inglês'"} em #{text_field :location, :name, :value => @city_with_abbr, :title => "Escolha a cidade onde será feita a busca do seu professor"} #{button_tag ">", :class => "btn btn-primary"}
+    %span De 
+    %span=text_field :speciality, :name, :value => "#{params[:speciality] && params[:speciality][:name]}", :title => "Escolha a especialidade do professor particular. Ex: 'inglês'" 
+    %span em 
+    %span=text_field :location, :name, :value => "#{params[:location] && params[:location][:name]}", :title => "Escolha a cidade onde será feita a busca do seu professor. Ex: 'Rio de Janeiro, RJ'"
+    %span=button_tag ">", :class => "btn btn-primary"

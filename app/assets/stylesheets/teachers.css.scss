@@ -28,6 +28,29 @@
   }
 }
 
+.search_fields_info {
+  position: relative;
+  top: -15px;
+  
+  #speciality_search_field_info, #city_search_field_info {
+    width: 50%;
+    position: relative;
+    font-size: small;
+    text-align: left;
+  }
+
+  #speciality_search_field_info {
+    float: left;
+    left: 110px;
+  }
+
+  #city_search_field_info {
+    float: right;
+    left: 10px;
+  }
+}
+
+
 .home-header {
   text-align: right;
   position: fixed;

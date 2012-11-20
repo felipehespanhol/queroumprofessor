@@ -5,7 +5,15 @@ class TeachersController < ApplicationController
 
   def search_results
     @city_with_abbr = "#{params[:location] && params[:location][:name]}"
-    @city = Cidade.joins(:estado).where("cidades.nome = ? and estados.sigla = ?", get_clean_city_name(@city_with_abbr), get_state_sigla(@city_with_abbr)).first
+    @city_name = get_clean_city_name(@city_with_abbr)
+    @state_sigla = get_state_sigla(@city_with_abbr)
+    if @city_name && @state_sigla
+      @city = Cidade.joins(:estado).where("cidades.nome = ? and estados.sigla = ?", @city_name, @state_sigla).first
+    # In case it doesn't find any city with there criteria, search for the city without state sigla
+    elsif @state_sigla.nil?
+      @related_cities = Cidade.where("nome = ?", @city_name)
+      @city = @related_cities.first if @related_cities.count == 1
+    end
     @speciality = Speciality.where("name = ?", "#{params[:speciality] && params[:speciality][:name]}").first
     @teachers = []
     if @speciality && @city
@@ -71,7 +79,7 @@ class TeachersController < ApplicationController
     # Tirar a sigla de estado q vem no termo da busca
     def get_clean_city_name(city_with_abbr)
       if city_with_abbr
-        city_name_match = city_with_abbr.match(/(.*),.*/)
+        city_name_match = city_with_abbr.match(/([A-Za-zçã\s]*).*/)
         city_name_match = city_name_match[1] if city_name_match
       end
       return city_name_match
@@ -79,7 +87,7 @@ class TeachersController < ApplicationController
 
     def get_state_sigla(city_with_abbr)
       if city_with_abbr
-        state_name_match = city_with_abbr.match(/.*,\s(.*)/)
+        state_name_match = city_with_abbr.match(/.*,\s*([A-Za-z]{2})/)
         state_name_match = state_name_match[1] if state_name_match
       end
       return state_name_match

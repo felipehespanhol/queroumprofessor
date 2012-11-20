@@ -1,19 +1,35 @@
-:coffeescript
-  $ ->
-    $(".header").remove()
-
 .min_search_bar
   = link_to image_tag("queroumprofessor_branco.png"), root_path
   = render :partial => "search_fields"
 
 %div{:style => "height: 60px"}
 
-
 - if @teachers.nil? || @teachers.empty?
   .center
     %br
-    .alert.alert-box
-      Ainda não há nenhum professor de #{params[:speciality][:name]} cadastrado na sua cidade...
+      - if @city.nil?
+        .alert.alert-box
+          - if @related_cities.nil? || @related_cities.empty?
+            Não foi encontrada nenhuma cidade no nosso banco chamada '#{params[:location][:name]}'
+          - else 
+            Você quis dizer 
+            %span
+              - @related_cities.each_with_index do |rc, i|
+                %span '#{rc.nome}, #{rc.estado.sigla}'
+                - if i == @related_cities.count-2
+                  %span ou
+                - elsif i == @related_cities.count-1
+                  ?
+                - else
+                  ,
+        - if @speciality.nil?
+          .alert.alert-box
+            Não foi encontrada nenhuma especialidade no nosso banco chamada '#{params[:speciality][:name]}'
+            %br
+            Entre em contato conosco para sugerir uma especialidade nova!
+      - else
+        .alert.alert-box
+          Não foi encontrado nenhum professor de #{@speciality.name.downcase} em #{@city.nome}...
 
 - else
   // %h3 Encontre seu professor:

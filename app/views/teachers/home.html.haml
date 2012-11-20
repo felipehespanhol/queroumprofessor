@@ -1,6 +1,4 @@
-.home-header
-  - if session[:teacher]
-    = "Olá #{session[:teacher]}"
+=render :partial => 'header'
 
 .home-search-box
   #messages
@@ -9,5 +7,14 @@
         = flash[:notice]
 
   = render :partial => 'search_fields'
+  .search_fields_info
+    #speciality_search_field_info 
+      Insira a especialidade do professor.
+      %br
+      Ex.: 'Inglês', 'Guitarra', 'Português'
+    #city_search_field_info 
+      Insira o nome da sua cidade com a siglakdo estado. 
+      %br
+      Ex.: 'Rio de Janeiro, RJ', 'Viçosa, MG'
 
 
