@@ -7,21 +7,22 @@
 - if @teachers.nil? || @teachers.empty?
   .center
     %br
-      - if @city.nil?
-        .alert.alert-box
-          - if @related_cities.nil? || @related_cities.empty?
-            Não foi encontrada nenhuma cidade no nosso banco chamada '#{params[:location][:name]}'
-          - else 
-            Você quis dizer 
-            %span
-              - @related_cities.each_with_index do |rc, i|
-                %span '#{rc.nome}, #{rc.estado.sigla}'
-                - if i == @related_cities.count-2
-                  %span ou
-                - elsif i == @related_cities.count-1
-                  ?
-                - else
-                  ,
+      - if @city.nil? || @speciality.nil?
+        - if @city.nil?
+          .alert.alert-box
+            - if @related_cities.nil? || @related_cities.empty?
+              Não foi encontrada nenhuma cidade no nosso banco chamada '#{params[:location][:name]}'
+            - else 
+              Você quis dizer 
+              %span
+                - @related_cities.each_with_index do |rc, i|
+                  %span '#{rc.nome}, #{rc.estado.sigla}'
+                  - if i == @related_cities.count-2
+                    %span ou
+                  - elsif i == @related_cities.count-1
+                    ?
+                  - else
+                    ,
         - if @speciality.nil?
           .alert.alert-box
             Não foi encontrada nenhuma especialidade no nosso banco chamada '#{params[:speciality][:name]}'
