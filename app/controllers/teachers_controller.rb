@@ -24,6 +24,7 @@ class TeachersController < ApplicationController
   def edit
     @teacher = Teacher.find(params[:id])
     @estados = Estado.all
+    @cidades = Cidade.where(["estado_id = ?", @teacher.estado_id]).all
     @specialities = Speciality.order("name")
   end
 

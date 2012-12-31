@@ -40,7 +40,7 @@
     .control-group{:class => "#{'error' if @teacher.errors[:estado_id].any?}"}
       = label_tag :estado_id, "Estado", :class => "control-label"
       .controls
-        = f.collection_select :estado_id, @estados, :id, :nome, :include_blank => "Escolha um estado"
+        = f.collection_select :estado_id, @estados, :id, :nome, :include_blank => true #"Escolha um estado"
         -if @teacher.errors[:estado_id].any?
           %span.help-inline Campo não pode ficar vazio
 
@@ -48,8 +48,8 @@
       = f.label :cidade, "Cidade", :class => "control-label"
       = hidden_field :cidade, :id, :value => @teacher.cidade_id
       .controls
-        #empty_cities
-          = select_tag ""
+        = f.collection_select :cidade_id, @cidades, :id, :nome, :include_blank => "Escolha um estado"
+        = @estado_id
 
     .control-group
       = f.label :description, "Descriçao", :class => "control-label"
