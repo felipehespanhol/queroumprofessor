@@ -24,19 +24,25 @@ $ ->
   update_estado = () ->
     estado_id = $("#teacher_estado_id").val()
     select = $("#teacher_cidade_id")
+    cidade_id = $("#cidade_id").val()
+    cidade_id = parseInt(cidade_id, 10)
     select.empty()
     if estado_id
       $.get '/cidades/find_by_estado.json', {"estado_id": estado_id}, (data)-> 
         select.append("<option value=''>Escolha uma cidade</option>")
         $.each data, (index, cidade)-> 
-          select.append("<option value='#{cidade.id}'>#{cidade.nome}</option>")
+          if cidade_id == cidade.id
+            select.append("<option value='#{cidade.id}' selected='selected'>#{cidade.nome}</option>")
+          else
+            select.append("<option value='#{cidade.id}'>#{cidade.nome}</option>")
     else
       select.append("<option value=''>Escolha um estado</option>")
   
   $("#teacher_estado_id").change ()->
     update_estado()
 
-  update_estado() # In case of page refreshing with a state selected
+  if $("#teacher_estado_id").val() != "" && $("#teacher_cidade_id") == ""
+    update_estado() # In case of page refreshing with a state selected
 
   $("#include_speciality_button").click ()->
     teacher_id = $("#teacher_id").val()
