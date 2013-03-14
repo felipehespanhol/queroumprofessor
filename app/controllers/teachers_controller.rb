@@ -75,6 +75,13 @@ class TeachersController < ApplicationController
     end
   end
 
+  def destroy
+    @teacher = Teacher.find(params[:id])
+    @teacher.destroy
+
+    redirect_to logout_path, :notice => "Dados de usuário excluídos do sistema."
+  end
+
   private
 
     # Tirar a sigla de estado q vem no termo da busca

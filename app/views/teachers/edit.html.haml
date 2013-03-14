@@ -71,9 +71,10 @@
     = collection_select :specialities_list, :id, @specialities, :id, :name, {}, {:size => 10}
     %br
     = button_tag "Incluir especialidade", {:id => "include_speciality_button"}
-        
+
 .clear
 
-
-
+.deactivate_account_message
+  =link_to "Excluir cadastro", teacher_path(@teacher.id), :method => "DELETE", :confirm => "Excluir seus dados do sistema?"
+      
 

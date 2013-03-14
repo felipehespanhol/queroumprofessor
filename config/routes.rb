@@ -11,7 +11,7 @@ Hespanhol::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure', :to => 'sessions#failure'
 
-  resources :teachers, :only => [:edit, :update]
+  resources :teachers, :only => [:edit, :update, :destroy]
   get "teachers/search_results"
   get "teachers/home"
   get "teachers/search_result"
