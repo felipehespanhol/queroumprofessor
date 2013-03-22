@@ -49,7 +49,6 @@
       = hidden_field :cidade, :id, :value => @teacher.cidade_id
       .controls
         = f.collection_select :cidade_id, @cidades, :id, :nome, :include_blank => "Escolha um estado"
-        = @estado_id
 
     .control-group
       = f.label :description, "Descriçao", :class => "control-label"

@@ -35,6 +35,7 @@ class TeachersController < ApplicationController
       redirect_to root_path, :notice => "Dados atualizados com sucesso"
     else
       @estados = Estado.all
+      @cidades = Cidade.where(["estado_id = ?", @teacher.estado_id]).all
       @specialities = Speciality.order("name")
       flash[:warning] = "Você ainda não informou suas especialidades." if @teacher.specialities.empty?
       render "edit", :notice => "teste"
